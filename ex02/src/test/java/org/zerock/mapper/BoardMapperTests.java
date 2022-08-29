@@ -20,45 +20,47 @@ public class BoardMapperTests {
    private BoardMapper mapper;
    
    @Test
-   public void testGerList() {
-      mapper.getList().forEach(board -> log.info(board));
+   public void testGetList() {
+   mapper.getList().forEach(board -> log.info(board));
    }
+   
    
    @Test
    public void testInsert() {
-	   BoardVO board = new BoardVO();
-	   board.setTitle("엄준식 화이팅");
-	   board.setContent("내용은 살아있따");
-	   board.setWriter("new sunsik");
-	   mapper.insert(board);
-
-	   log.info(board);
-   }
-   
-   @Test
-   public void testInsertSelectKey() {
-	   BoardVO board = new BoardVO();
-	   board.setTitle("ㅅ,ㅐ로 해 select key");
-	   board.setContent("새 글 , select key");
-	   board.setWriter("new bie");
-	   
-	   mapper.insertSelectKey(board);
-	   
-	   log.info(board);
+      BoardVO board = new BoardVO();
+      board.setTitle("고추장 닭날개 조림");
+      board.setContent("근데 이제 바질을 곁들인");
+      board.setWriter("newbie");
+      
+      mapper.insert(board);   
+      
+      log.info(board);
    }
    
    @Test
    public void testRead() {
-	   
-	   BoardVO board = mapper.read(1L);
-	   //
-	   
-	   log.info(board);
+      
+      BoardVO board = mapper.read(5L);
+      //5번 게시물 읽기
+      
+      log.info(board);
    }
-   
-   @Test
-   public void testDelete() {
-	   
-	   log.info("DELETE COUNT: "+mapper.delecte(3L));
+      @Test
+      public void testDelete() {
+         log.info("delete count: " +mapper.delete(3L));
+         }
+      
+      @Test
+      public void testUpdate() {
+         BoardVO board = new BoardVO();
+         
+         board.setBno(5L);
+         board.setTitle("간장닭날개조림");
+         board.setContent("짭조롬..");
+         board.setWriter("user00");
+         
+         int count=mapper.update(board);
+         log.info("UPDATE COUNT:"+count);
+      }
+         
    }
-}
