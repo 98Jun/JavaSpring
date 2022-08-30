@@ -33,9 +33,9 @@ public class RootConfig {
 
 	@Bean
 	public SqlSessionFactory sqlSessionFatory() throws Exception {
-		SqlSessionFactoryBean sqlSessionFacetoy = new SqlSessionFactoryBean();
-		sqlSessionFacetoy.setDataSource(dataSource());
+		SqlSessionFactoryBean sqlSessionFactory= new SqlSessionFactoryBean();
+		sqlSessionFactory.setDataSource(dataSource());
 
-		return (SqlSessionFactory) sqlSessionFacetoy.getObject();
+		return (SqlSessionFactory) sqlSessionFactory.getObject();
 	}
 }
